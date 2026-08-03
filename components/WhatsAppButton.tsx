@@ -11,7 +11,15 @@ export default function WhatsAppButton({ name, phone }: WhatsAppButtonProps) {
     const intlPhone = phone.startsWith("0") ? "92" + phone.slice(1) : "92" + phone;
 
     const message = encodeURIComponent(
-      `Hi ${name}, your registration for Globe IT Solutions is pending. Please pay the 2000 PKR registration fee to complete your enrollment. Thank you!`
+      `Hi ${name}, your registration for Globe IT Solutions is pending. ` +
+      `Please pay the 2000 PKR registration fee to complete your enrollment.\n\n` +
+      `💳 *Payment Methods:*\n` +
+      `• JazzCash: 0304-1641062\n` +
+      `• Easypaisa: 0335-0667791\n\n` +
+      `After payment, send a screenshot to confirm your slot.\n\n` +
+      `📞 Contact us:\n` +
+      `+92 304 1641062 | +92 335 0667791\n\n` +
+      `Thank you! — Globe IT Solutions 🎓`
     );
 
     const url = `https://wa.me/${intlPhone}?text=${message}`;
