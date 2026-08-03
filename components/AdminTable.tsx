@@ -197,7 +197,7 @@ export default function AdminTable({ initialRegistrations }: { initialRegistrati
                       <td className="px-4 py-3 text-gray-400 whitespace-nowrap text-xs">{dateStr(r.createdAt)}</td>
                       <td className="px-4 py-3 whitespace-nowrap">
                         <div className="flex items-center gap-2">
-                          <WhatsAppButton name={r.name} phone={r.phone} />
+                          <WhatsAppButton name={r.name} phone={r.phone} status={r.status} />
                           <button
                             onClick={() => toggleStatus(r.id, r.status)}
                             disabled={updatingId === r.id}
@@ -258,7 +258,7 @@ export default function AdminTable({ initialRegistrations }: { initialRegistrati
                   </div>
                 </div>
                 <div className="flex gap-2 pt-1">
-                  <WhatsAppButton name={r.name} phone={r.phone} />
+                  <WhatsAppButton name={r.name} phone={r.phone} status={r.status} />
                   <button
                     onClick={() => toggleStatus(r.id, r.status)}
                     disabled={updatingId === r.id}
