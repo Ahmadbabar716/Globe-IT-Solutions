@@ -54,8 +54,11 @@ export default function RegistrationForm() {
     if (!form.fatherName.trim()) newErrors.fatherName = "Father name is required.";
     if (!/^03[0-9]{9}$/.test(form.phone.trim()))
       newErrors.phone = "Enter a valid Pakistani number (e.g. 03001234567).";
-    if (!/^\d{5}-\d{7}-\d{1}$/.test(form.cnic.trim()))
-      newErrors.cnic = "Enter CNIC as XXXXX-XXXXXXX-X.";
+    
+    // CNIC is optional. Only validate format if non-empty
+    if (form.cnic.trim() && !/^\d{5}-\d{7}-\d{1}$/.test(form.cnic.trim()))
+      newErrors.cnic = "Enter CNIC as XXXXX-XXXXXXX-X or leave empty.";
+
     if (!form.address.trim()) newErrors.address = "Address is required.";
     if (!form.course) newErrors.course = "Please select a course.";
     setErrors(newErrors);
@@ -188,9 +191,11 @@ export default function RegistrationForm() {
           {errors.phone && <p className={errorClass}>{errors.phone}</p>}
         </div>
 
-        {/* CNIC */}
+        {/* CNIC (Optional) */}
         <div>
-          <label htmlFor="cnic" className={labelClass}>CNIC *</label>
+          <label htmlFor="cnic" className={labelClass}>
+            CNIC <span className="text-gray-500 font-normal">(Optional)</span>
+          </label>
           <input
             id="cnic"
             name="cnic"

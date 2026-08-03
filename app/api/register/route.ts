@@ -3,7 +3,7 @@ import { prisma } from "@/lib/prisma";
 
 // Pakistani phone number: starts with 03, 10-11 digits total
 const PHONE_REGEX = /^03[0-9]{9}$/;
-// CNIC format: XXXXX-XXXXXXX-X
+// CNIC format: XXXXX-XXXXXXX-X (Optional)
 const CNIC_REGEX = /^\d{5}-\d{7}-\d{1}$/;
 
 const COURSES = [
@@ -35,9 +35,10 @@ export async function POST(req: NextRequest) {
         { status: 400 }
       );
     }
-    if (!cnic?.trim() || !CNIC_REGEX.test(cnic.trim())) {
+    // CNIC is optional. If provided, validate format.
+    if (cnic?.trim() && !CNIC_REGEX.test(cnic.trim())) {
       return NextResponse.json(
-        { error: "Please enter a valid CNIC (format: XXXXX-XXXXXXX-X)." },
+        { error: "Please enter a valid CNIC (format: XXXXX-XXXXXXX-X) or leave it blank." },
         { status: 400 }
       );
     }
@@ -55,10 +56,9 @@ export async function POST(req: NextRequest) {
         name: name.trim(),
         fatherName: fatherName.trim(),
         phone: phone.trim(),
-        cnic: cnic.trim(),
+        cnic: cnic?.trim() || null,
         address: address.trim(),
         course: course.trim(),
-        // status defaults to "pending" via Prisma schema
       },
     });
 

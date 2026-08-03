@@ -14,15 +14,12 @@ generator client {
   previewFeatures = ["driverAdapters"]
 }
 
-// IMPORTANT: No cascade deletes, no auto-cleanup, no cron jobs anywhere in this codebase.
-// Registrations are ONLY ever deleted if an admin explicitly clicks a delete button
-// (which is not implemented by default — all data is retained permanently).
 model Registration {
   id         String   @id @default(cuid())
   name       String
   fatherName String
   phone      String
-  cnic       String
+  cnic       String?  // Optional field
   address    String
   course     String
   status     String   @default("pending") // "pending" | "confirmed"

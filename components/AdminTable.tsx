@@ -10,7 +10,7 @@ export type Registration = {
   name: string;
   fatherName: string;
   phone: string;
-  cnic: string;
+  cnic?: string | null;
   address: string;
   course: string;
   status: string;
@@ -184,7 +184,7 @@ export default function AdminTable({ initialRegistrations }: { initialRegistrati
                       <td className="px-4 py-3 font-medium text-white whitespace-nowrap">{r.name}</td>
                       <td className="px-4 py-3 text-gray-300 whitespace-nowrap">{r.fatherName}</td>
                       <td className="px-4 py-3 text-gray-300 whitespace-nowrap font-mono text-xs">{r.phone}</td>
-                      <td className="px-4 py-3 text-gray-300 whitespace-nowrap font-mono text-xs">{r.cnic}</td>
+                      <td className="px-4 py-3 text-gray-300 whitespace-nowrap font-mono text-xs">{r.cnic || "N/A"}</td>
                       <td className="px-4 py-3 text-gray-400 max-w-[160px] truncate" title={r.address}>{r.address}</td>
                       <td className="px-4 py-3 whitespace-nowrap">
                         <span className="rounded-full border border-neon-blue/30 bg-neon-blue/10 px-2.5 py-1 text-xs text-blue-300">
@@ -242,7 +242,7 @@ export default function AdminTable({ initialRegistrations }: { initialRegistrati
                   </div>
                   <div>
                     <p className="text-gray-500">CNIC</p>
-                    <p className="text-gray-200 font-mono">{r.cnic}</p>
+                    <p className="text-gray-200 font-mono">{r.cnic || "N/A"}</p>
                   </div>
                   <div>
                     <p className="text-gray-500">Course</p>

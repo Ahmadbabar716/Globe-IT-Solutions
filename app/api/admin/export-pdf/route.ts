@@ -51,7 +51,7 @@ export async function GET() {
       r.name,
       r.fatherName,
       r.phone,
-      r.cnic,
+      r.cnic || "N/A",
       r.address.length > 30 ? r.address.substring(0, 28) + "…" : r.address,
       r.course,
       r.status.toUpperCase(),
