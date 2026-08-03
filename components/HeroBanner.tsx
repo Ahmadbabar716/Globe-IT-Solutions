@@ -39,7 +39,7 @@ export default function HeroBanner() {
         {/* Top label */}
         <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-neon-cyan/30 bg-neon-cyan/10 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-neon-cyan shadow-neon-cyan/20">
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-neon-cyan animate-pulse" />
-          Now Enrolling — August 2025 Batch
+          Now Enrolling — August 2026 Batch
         </div>
 
         {/* Main headline */}
